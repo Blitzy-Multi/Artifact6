@@ -3,3 +3,6 @@ node_modules/
 
 # npm debug/log output
 npm-debug.log*
+
+# Local environment variables / secrets (never commit secrets)
+.env
