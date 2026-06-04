@@ -1,0 +1,5 @@
+# Dependencies (installed via `npm install`; pinned by package-lock.json)
+node_modules/
+
+# npm debug/log output
+npm-debug.log*
