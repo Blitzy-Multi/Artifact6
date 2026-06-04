@@ -1,0 +1,16 @@
+{
+  "name": "artifact6",
+  "version": "1.0.0",
+  "description": "Minimal Node.js + Express.js tutorial server with two GET endpoints.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "express": "^5.2.1"
+  },
+  "license": "MIT"
+}
