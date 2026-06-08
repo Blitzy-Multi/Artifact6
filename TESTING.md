@@ -1,6 +1,6 @@
 # Testing
 
-This project uses **[Jest](https://jestjs.io/)** as the test runner, assertion library, and coverage tool, and **[Supertest](https://github.com/ladjs/supertest)** for HTTP-level assertions against the Express application.
+This project uses **[Jest](https://jestjs.io/)** as the test runner, assertion library, and coverage tool, and **[Supertest](https://github.com/forwardemail/supertest)** for HTTP-level assertions against the Express application.
 
 ## Test stack
 
@@ -82,5 +82,5 @@ Coverage is collected only from `app.js` (`collectCoverageFrom: ["app.js"]`); th
 
 ## Environment
 
-- Node.js 18 or higher (the project targets the current Active LTS, Node.js 24).
+- Node.js 18 or higher (tested on Node.js 20.x LTS).
 - No environment variables and no fixed `PORT` are required for tests — Supertest uses an ephemeral port.
