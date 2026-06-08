@@ -11,8 +11,9 @@ to read in one sitting, run locally, and test end to end.
 | `GET` | `/` | `200` | `Hello world` | `text/html; charset=utf-8` |
 | `GET` | `/good-evening` | `200` | `Good evening` | `text/html; charset=utf-8` |
 
-Any unknown route, or a non-`GET` method on one of these routes, falls through to
-Express's default `404` handler.
+Any unknown route, or a non-`GET` method on one of these routes, returns a generic
+`404` response with the plain-text body `Not Found`. The requested path and method
+are never reflected back in the response.
 
 ## Prerequisites
 

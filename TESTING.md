@@ -72,9 +72,10 @@ For each endpoint the suite asserts the HTTP status, the **exact** response body
 
 - `GET /` → `200`, body `Hello world`, `text/html; charset=utf-8`
 - `GET /good-evening` → `200`, body `Good evening`, `text/html; charset=utf-8`
-- `GET /does-not-exist` → `404` (unknown route, Express default handler)
-- `POST /` → `404` (no matching route + method)
+- `GET /does-not-exist` → `404`, generic body `Not Found` (unknown route; the requested path is not reflected)
+- `POST /` → `404`, generic body `Not Found` (no matching route + method)
 - `HEAD /` → `200` (Express auto-HEAD for GET routes)
+- Encoded SQL-injection- and XSS-like paths → `404` with the generic `Not Found` body (the payload is never reflected)
 
 ## Coverage policy
 

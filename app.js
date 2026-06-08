@@ -13,7 +13,8 @@
  *   - GET /good-evening  -> "Good evening" (R2: new endpoint)
  *
  * Security defaults (OWASP A05): X-Powered-By disabled; responses are literal
- * strings only; unknown routes fall through to Express's default 404 handler.
+ * strings only; unmatched routes/methods return a generic 404 ("Not Found")
+ * that does not reflect the requested path or method.
  *
  * CommonJS module (package.json does not declare "type": "module").
  */
@@ -35,6 +36,17 @@ app.get('/', (req, res) => {
 // R2 - new endpoint: GET /good-evening returns exactly "Good evening".
 app.get('/good-evening', (req, res) => {
   res.send('Good evening');
+});
+
+// Generic catch-all 404 handler, registered AFTER all routes so it runs only
+// when no route/method matched. Returns a static plain-text "Not Found" body so
+// that unmatched routes and methods do NOT reflect the requested path or method
+// back to the client. This replaces Express's default finalhandler body
+// ("Cannot GET <path>"), which echoes the request target (including any encoded
+// injection/reflection payload in it). CP5 security hardening: the 404 body
+// leaks no path, method, version, or stack-trace detail; the status stays 404.
+app.use((req, res) => {
+  res.status(404).type('text/plain').send('Not Found');
 });
 
 // Export the configured app WITHOUT starting a listener (R3 testability).
